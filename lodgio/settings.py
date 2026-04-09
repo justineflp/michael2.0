@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'core',
     'listings',
     'bookings',
+    'reviews',
+    'coupon',
+    'coupon_usage',
 ]
 
 MIDDLEWARE = [
