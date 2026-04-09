@@ -40,9 +40,15 @@ INSTALLED_APPS = [
     'core',
     'listings',
     'bookings',
+
     'search',
     'approvals',
     'wishlist',
+
+    'identity_document',
+    'message',
+    'report_ticket',
+
 ]
 
 MIDDLEWARE = [
