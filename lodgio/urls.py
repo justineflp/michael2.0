@@ -19,16 +19,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),
-    path('search/', include('search.urls')),
-    path('approvals/', include('approvals.urls')),
-    path('wishlist/', include('wishlist.urls')),
-    path('listings/', include('listings.urls')),
-    path('bookings/', include('bookings.urls')),
-    path('reviews/', include('reviews.urls')),
-    path('coupon/', include('coupon.urls')),
-    path('coupon_usage/', include('coupon_usage.urls')),
-    path('identity_document/', include('identity_document.urls')),
-    path('message/', include('message.urls')),
-    path('report_ticket/', include('report_ticket.urls')),
+    path('', include('accounts.urls')),
+    path('properties/', include('properties.urls')),
+    path('reservations/', include('reservations.urls')),
+    path('communications/', include('communications.urls')),
+    path('discovery/', include('discovery.urls')),
+    path('marketing/', include('marketing.urls')),
 ]
