@@ -18,5 +18,8 @@ class CouponUsage(models.Model):
     )
     used_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'coupon_usage'
+
     def __str__(self):
         return f"Usage {self.usage_id} – {self.coupon.code} by {self.user}"

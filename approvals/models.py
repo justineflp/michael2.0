@@ -11,5 +11,8 @@ class ListingApproval(models.Model):
     reviewed_at = models.DateTimeField(auto_now_add=True)
     remarks = models.TextField(blank=True)
 
+    class Meta:
+        db_table = 'listing_approval'
+
     def __str__(self):
         return f"Approval {self.decision} for listing {self.listing_id}"

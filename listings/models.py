@@ -19,6 +19,9 @@ class Listing(models.Model):
     approved_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='approved_listings')
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'listing'
+
     def __str__(self):
         return self.title
 
@@ -28,6 +31,9 @@ class CalendarBlock(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     reason = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        db_table = 'calendar_block'
 
     def __str__(self):
         return f"{self.listing.title} blocked from {self.start_date} to {self.end_date}"

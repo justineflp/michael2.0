@@ -17,5 +17,8 @@ class Booking(models.Model):
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'booking'
+
     def __str__(self):
         return f"Booking {self.booking_id} - at {self.listing}"

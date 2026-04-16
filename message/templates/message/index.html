@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %}Messages | Lodgio{% endblock %}
+{% block content %}
+<div class="dashboard-header">
+    <h1>Messages</h1>
+    <p class="text-muted">Manage user messages</p>
+</div>
+
+<div class="glass-card">
+    <ul style="list-style-type: none; padding-left: 0;">
+    {% for item in items %}
+      <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border);">
+        <strong>From {{ item.sender }} to {{ item.receiver }}</strong><br>
+        Message: <em>{{ item.content }}</em>
+      </li>
+    {% empty %}
+      <li>No messages found.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -12,10 +12,8 @@ class IdentityDocument(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     document_image = models.ImageField(upload_to='documents/')
 
+    class Meta:
+        db_table = 'identity_document'
+
     def __str__(self):
         return f"{self.document_type} ({self.document_number})"
-
-
-from django.db import models
-
-# Create your models here.

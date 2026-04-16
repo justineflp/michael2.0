@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import CouponUsage
 
+admin.site.register(CouponUsage)
+
 
 @admin.register(CouponUsage)
 class CouponUsageAdmin(admin.ModelAdmin):

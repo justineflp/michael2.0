@@ -24,5 +24,9 @@ class Review(models.Model):
     comment = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'review'
+
     def __str__(self):
         return f"Review {self.review_id} – {self.listing} ({self.rating}/5)"
+

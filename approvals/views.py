@@ -1,6 +1,10 @@
 from django.shortcuts import render
+from django.views import View
 from .models import ListingApproval
 
-def approval_list(request):
-    approvals = ListingApproval.objects.all()
-    return render(request, 'approvals/approval_list.html', {'approvals': approvals})
+class IndexView(View):
+    template_name = 'approvals/index.html'
+    
+    def get(self, request):
+        items = ListingApproval.objects.all()
+        return render(request, self.template_name, {'items': items})

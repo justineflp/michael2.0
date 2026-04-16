@@ -5,5 +5,8 @@ class Wishlist(models.Model):
     listing_id = models.IntegerField()
     added_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'wishlist'
+
     def __str__(self):
         return f"Wishlist item for user {self.user_id}"

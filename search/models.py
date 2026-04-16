@@ -5,5 +5,8 @@ class SearchLog(models.Model):
     filters_used = models.TextField()
     searched_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'search_log'
+
     def __str__(self):
         return f"Search by user {self.user_id}"

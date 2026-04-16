@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %}Listings | Lodgio{% endblock %}
+{% block content %}
+<div class="dashboard-header">
+    <h1>Listings</h1>
+    <p class="text-muted">Manage all property listings</p>
+</div>
+
+<div class="glass-card">
+    <ul style="list-style-type: none; padding-left: 0;">
+    {% for item in items %}
+      <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border);">
+        <strong>{{ item.title }}</strong> by <span class="text-muted">{{ item.host }}</span><br>
+        Price: <em>${{ item.base_price }}</em>
+      </li>
+    {% empty %}
+      <li>No listings found.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

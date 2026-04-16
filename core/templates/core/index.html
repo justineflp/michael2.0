@@ -15,12 +15,21 @@
             <button class="btn-ghost">Refresh Status</button>
         </div>
         
-        <div class="empty-state">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--brand-500); margin-bottom: 16px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-            <h3 style="color: var(--navy-800); margin-bottom: 10px; font-weight: 700;">You are fully authenticated</h3>
-            <p style="color: var(--navy-600); font-size: 14px; max-width: 400px; margin: 0 auto;">
-                The Index tracking module is operating correctly. When you expand to the next module, your Booking and Listing features will populate here.
-            </p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/listings/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Listings</a>
+            <a href="/bookings/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Bookings</a>
+            <a href="/reviews/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Reviews</a>
+            <a href="/coupon/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Coupons</a>
+            <a href="/coupon_usage/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Coupon Usage</a>
+            <a href="/search/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Search Logs</a>
+            <a href="/approvals/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Approvals</a>
+            <a href="/wishlist/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Wishlists</a>
+            <a href="/identity_document/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Identity Documents</a>
+            <a href="/message/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Messages</a>
+            <a href="/report_ticket/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Report Tickets</a>
+            {% if request.user.is_staff or request.user.role == 'Admin' %}
+            <a href="/admin/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px; background-color: var(--brand-50);">Admin Panel</a>
+            {% endif %}
         </div>
     </div>
 </div>

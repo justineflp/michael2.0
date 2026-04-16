@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %}Reviews | Lodgio{% endblock %}
+{% block content %}
+<div class="dashboard-header">
+    <h1>Reviews</h1>
+    <p class="text-muted">Manage all user reviews</p>
+</div>
+
+<div class="glass-card">
+    <ul style="list-style-type: none; padding-left: 0;">
+    {% for item in items %}
+      <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border);">
+        <strong>{{ item.rating }}/5 stars</strong> for <span class="text-muted">{{ item.listing }}</span><br>
+        Review: <em>{{ item.comment }}</em>
+      </li>
+    {% empty %}
+      <li>No reviews found.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

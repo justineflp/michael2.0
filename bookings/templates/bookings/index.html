@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %}Bookings | Lodgio{% endblock %}
+{% block content %}
+<div class="dashboard-header">
+    <h1>Bookings</h1>
+    <p class="text-muted">Manage all bookings</p>
+</div>
+
+<div class="glass-card">
+    <ul style="list-style-type: none; padding-left: 0;">
+    {% for item in items %}
+      <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border);">
+        <strong>Booking {{ item.booking_id }}</strong> by <span class="text-muted">{{ item.guest }}</span><br>
+        Dates: <em>{{ item.check_in_date }} to {{ item.check_out_date }}</em>
+      </li>
+    {% empty %}
+      <li>No bookings found.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
