@@ -1,8 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
-from properties.models import Listing
-from reservations.models import Booking
+from properties.models import Listing, Booking
 
 
 class Coupon(models.Model):

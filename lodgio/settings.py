@@ -37,12 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Lodgio consolidated apps
     'accounts',
     'properties',
-    'reservations',
     'communications',
     'discovery',
     'marketing',
+    'finances',
 ]
 
 MIDDLEWARE = [
