@@ -1,57 +1,109 @@
-# Lodgio Group Project
+# Lodgio
+A comprehensive platform to manage reservations, listings, communications, and customer interactions dynamically for lodging businesses.
 
-## Overview
-Lodgio is a Django-based accommodation and booking platform designed to map the entities of our ERD strictly into isolated modular apps, fulfilling the requirements for the Django Project Creation assignment.
-
-## Group Member Contributions & Project Structure
-To ensure a cohesive project, the ERD was divided such that each group member handled specific entities, encapsulating them into individual Django Apps within this master repository:
-
-*   **`core`**: Contains the foundational `User` model (handling secure authentication, passwords, and sessions), as well as the main Index Dashboard and Login View. *
-*   **`listings`**: Handles the physical tracking of properties via the `Listing` model, and their availability via the `CalendarBlock` model.
-*   **`bookings`**: Contains the `Booking` model mapping Guest interactions to Specific Listings. *(Built by Group Leader)*
-*   **`wishlist`**: Manages users saving and tracking their favorite properties. *(Built by Teammate)*
-*   **`search`**: Handles and logs query filtering across active lodgings. *(Built by Teammate)*
-*   **`approvals`**: Administrator tracking for validating and verifying host listings. *(Built by Teammate)*
-
-- `IdentityDocument` (upload, track, and verify user documents)  *(Built by Teammate)*
-  - `Message` (send and receive messages between users)  *(Built by Teammate)*
-  - `ReportTicket` (submit and manage user reports)  *(Built by Teammate)*
-  This app contains **models, views, URLs, forms, and UI templates** for these entities.
-
-*   **`identity_document`**: Secure tracking and verification of user IDs and Host verification. *(Built by Teammate)*
-*   **`message`**: Handles internal communication history between Guests and Hosts. *(Built by Teammate)*
-*   **`report_ticket`**: Platform moderation system for users to report safety or quality issues. *(Built by Teammate)*
-*   **`reviews`**: Allows users to leave and read feedback on host listings. *(Built by Teammate)*
-*   **`coupon`**: Manages the creation and tracking of promotional discounts. *(Built by Teammate)*
-*   **`coupon_usage`**: Logs and verifies the application of coupons to bookings. *(Built by Teammate)*
-
->>>>>>> 214f70052b7d070765719a26882f34d3c58a1088
 ---
 
-## How to Run This Project
+## Group Members
 
-### 1. Environment Setup
-Create and activate an empty Python virtual environment, then quickly install all necessary dependencies using the provided file:
+| Name | Assigned App | Scope |
+| ---- | ------------ | ----- |
+| gmmichael05-lang (Group Leader) | `accounts` | User & profile authentication |
+| gmmichael05-lang (Group Leader) | `properties` | Management of lodging properties, availability blocks, and active bookings |
+| Kirsten Baldon | `communications` | System messaging, user dispute tickets, and identity verification logic |
+| Ken | `discovery` | User search histories, wishlist saves, and listing approval processes |
+| intra-glitch (Allan) | `marketing` | Promotional coupons, discount implementations, and guest reviews |
+| Reserved (TBD) | `finances` | Administrative logic for payment and host payouts (Placeholder Setup) |
+
+---
+
+## Project Structure
+
+```
+michael2.0/
+├── lodgio/                    # Core project configurations
+│   ├── settings.py            # Django settings (uses SQLite3)
+│   ├── urls.py                # Root URL configuration pointing to the 6 apps
+├── accounts/                  # User Management & Dashboard
+├── properties/                # Listing, CalendarBlock, Booking
+├── communications/            # IdentityDocument, Message, ReportTicket
+├── discovery/                 # SearchLog, ListingApproval, Wishlist
+├── marketing/                 # Coupon, CouponUsage, Review
+├── finances/                  # PriceAdjustment, Payment, HostPayout, AdminLog (Skeletons)
+├── db.sqlite3                 # Pre-populated local database
+├── manage.py
+└── README.md
+```
+
+---
+
+## Requirements
+
+- Python 3.10+
+- Django 5.0+ (or as specified in your environment)
+- **Note:** The included `db.sqlite3` file is pre-configured and pre-migrated to save you from running MySQL database migrations. You can run the application directly out-of-the-box.
+
+---
+
+## How to Run the Project
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/justineflp/michael2.0.git
+cd michael2.0
+```
+
+### 2. Create and activate a virtual environment
+```bash
+python -m venv .venv
+
+# Windows
+.\.venv\Scripts\Activate.ps1
+
+# Mac/Linux
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Database Connection
-This project relies on MySQL 8.0 instead of SQLite. Open MySQL Workbench and run:
-```sql
-CREATE DATABASE lodgio_db;
-```
-*(Ensure your local MySQL `root` user password matches the one in `lodgio/settings.py`. If it does not, update the file locally before proceeding).*
-
-### 3. Generate the Tables
-Once the core database is created, let Django read all the modular Apps and construct the formal ERD structure inside MySQL Workbench:
+### 4. Run the development server
+Because a pre-migrated `db.sqlite3` is shipped with this branch, you **do not need to migrate**.
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+python manage.py runserver
 ```
 
-### 4. Boot the Server
-```bash
-python manage.py runserver 8080
+### 5. Open in browser
 ```
-Navigate to `http://127.0.0.1:8080/login/` to enter the application!
+http://127.0.0.1:8000/
+```
+
+You will load into the index login page. 
+
+### 6. Login as an Admin
+To view the structure and routing natively, you can use the superuser account embedded in the repository:
+- **Email:** `admin@lodgio.com`
+- **Password:** `adminpassword`
+
+---
+
+## URL Structure
+
+| URL | Description |
+|-----|-------------|
+| `/` | Index — Landing and Login |
+| `/accounts/` | Accounts Dashboard |
+| `/properties/` | Properties & Bookings logic |
+| `/communications/` | Communications logic |
+| `/discovery/` | Discovery & Features logic |
+| `/marketing/` | Marketing & Engagements logic |
+| `/finances/` | Finances logic (Under Construction) |
+| `/admin/` | Django Built-in Admin panel (superusers only) |
+
+---
+
+## Notes
+
+- The custom `User` model (`accounts.User`) requires an explicit `email` rather than a standard `username` for logging in.
+- To use MySQL instead of the native SQLite3 database shipped with the repo, open `lodgio/settings.py` and replace the `DATABASES` dictionary with `django.db.backends.mysql` along with your local root credentials.
